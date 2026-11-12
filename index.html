@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Uma estante de histórias, relações e memórias. Instalação interativa Pages of You.">
+    <title>Pages of You — Instalação</title>
+    <link rel="stylesheet" href="instalacao/estilos.css">
+    <link rel="stylesheet" href="instalacao/identidade.css">
+    <script src="instalacao/supabase/vendor/supabase-2.49.8.js" defer></script>
+    <script src="instalacao/supabase/config.js" defer></script>
+    <script src="instalacao/supabase/client.js" defer></script>
+    <script src="instalacao/instalacao.js" defer></script>
+  </head>
+  <body class="installation-site">
+    <header>
+      <h1 class="installation-title"><span>Pages</span> <em>of</em> <span>You.</span></h1>
+    </header>
+    <main id="installation" tabindex="-1">
+      <section id="shelf" aria-label="Estante de livros">
+      </section>
+      <button id="shelf-left" class="shelf-slide" data-dwell aria-label="Ver livros à esquerda" hidden>‹</button>
+      <button id="shelf-right" class="shelf-slide" data-dwell aria-label="Ver livros à direita" hidden>›</button>
+      <section id="reader" hidden aria-label="Livro aberto">
+        <div class="reader-top">
+          <button id="return-shelf" data-dwell>← Voltar à estante</button>
+          <span id="book-code">
+          </span>
+        </div>
+        <h2 id="book-name">
+        </h2>
+        <div id="spread">
+        </div>
+        <nav class="pagination" aria-label="Folhear livro">
+          <button id="previous" data-dwell aria-label="Páginas anteriores">←</button>
+          <span id="page-status" role="status">
+          </span>
+          <button id="next" data-dwell aria-label="Páginas seguintes">→</button>
+        </nav>
+      </section>
+    </main>
+    <footer>
+      <span id="collection-status" role="status">A carregar os livros públicos online…</span>
+      <span id="instruction" role="status">A preparar a instalação…</span>
+    </footer>
+    <div id="hand-cursor" hidden aria-hidden="true">
+      <svg viewBox="0 0 48 48">
+        <circle cx="24" cy="24" r="20"/>
+      </svg>
+      <i>
+      </i>
+    </div>
+    <dialog id="photo-view">
+      <button class="close" aria-label="Fechar fotografia">×</button>
+      <img alt="">
+      <p>Junta os dedos ou retira a mão para voltar.</p>
+    </dialog>
+    <canvas id="hand-landmarks" aria-hidden="true">
+    </canvas>
+    <video id="camera" autoplay playsinline muted hidden>
+    </video>
+    <script>
+      /* A instalação não escreve nos dados do site de criação. */
+    </script>
+  </body>
+</html>
