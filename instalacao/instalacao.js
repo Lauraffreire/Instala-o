@@ -259,7 +259,7 @@ function renderShelf() {
   const palette = ['#8b936d', '#c88369', '#a6a5c2', '#dfc16d', '#819d9d', '#be8e9c'];
   $('#shelf').innerHTML = books.length ? books.map((book, index) => {
     const spine = book.spine || {};
-    const title = typeof spine.title === 'string' && spine.title.trim() ? spine.title : book.name;
+    const title = typeof spine.title === 'string' ? spine.title : book.name;
     const textStyle = (spine.color ? 'color:' + color(spine.color) + ';' : '') +
       (spine.fontSize ? 'font-size:' + number(spine.fontSize, 14, 48, 28) + 'px;' : '') +
       (spine.direction === 'up' ? 'transform:rotate(180deg);' : '');
@@ -268,7 +268,7 @@ function renderShelf() {
       '" data-book="' + escapeText(book.id) + '" style="--cover:' + color(spine.background ||
       book.color || palette[index % palette.length]) + ';--spine-pattern-color:' + color(spine.patternColor || '#ffffff') + ';--height:' + (75 + (index * 17) % 25) +
       '%;--lean:' + (index % 4 === 1 ? -3 : 0) + 'deg" aria-label="Abrir o livro de ' +
-      escapeText(book.name) + '"><span style="' + textStyle + '">' + escapeText(title) + '</span></button>';
+      escapeText(book.name) + '"><i class="spine-art" aria-hidden="true" style="' + PoyObjects.spineArt(spine.format, spine.patternColor) + '"></i><span style="' + textStyle + '">' + escapeText(title) + '</span></button>';
   }).join('') :
     '<p class="shelf-empty">Esta estante está à espera de histórias.<br>Os livros públicos publicados no site aparecem aqui.</p>';
   $('#shelf').scrollLeft = scrollPosition;

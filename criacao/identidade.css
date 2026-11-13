@@ -1120,3 +1120,231 @@ body.installation-site {
     padding: 30px 22px 34px 36px;
   }
 }
+
+/* Editor: verde floresta, sálvia e papel claro. */
+.creation-site:has(.visual-editor),
+.creation-site main:has(> .visual-editor),
+.creation-site .visual-editor {
+  background: var(--green);
+}
+.creation-site .visual-editor {
+  --editor-panel: #e3e9dc;
+  --editor-control: #f6f7ef;
+  --editor-line: #a9b8a0;
+  --editor-accent: #41715b;
+  color: var(--ink);
+}
+.creation-site .visual-editor .editor-sidebar,
+.creation-site .visual-editor .editor-properties {
+  background: var(--editor-panel);
+  border-color: var(--editor-line);
+  border-radius: 0;
+}
+.creation-site .visual-editor .editor-canvas {
+  background: var(--green);
+}
+.creation-site .visual-editor .editor-canvas-head,
+.creation-site .visual-editor .design-part-title,
+.creation-site .visual-editor #live-preview > .design-hint {
+  color: var(--paper);
+}
+.creation-site .visual-editor .design-hint,
+.creation-site .visual-editor label,
+.creation-site .visual-editor summary {
+  color: #3e5949;
+}
+.creation-site .visual-editor button,
+.creation-site .visual-editor .button.secondary {
+  background: var(--editor-control);
+  color: var(--green);
+  border-color: var(--editor-line);
+  box-shadow: none;
+}
+.creation-site .visual-editor button:not(:disabled):hover,
+.creation-site .visual-editor .button.secondary:hover {
+  background: #cddbc8;
+  border-color: var(--editor-accent);
+}
+.creation-site .visual-editor button[aria-pressed=true],
+.creation-site .visual-editor .button:not(.secondary),
+.creation-site .visual-editor .button:not(.secondary):hover {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--paper);
+  box-shadow: none;
+}
+.creation-site .visual-editor input:not([type=checkbox]):not([type=range]),
+.creation-site .visual-editor textarea,
+.creation-site .visual-editor select {
+  background: var(--editor-control);
+  border-color: var(--editor-line);
+  color: var(--ink);
+}
+.creation-site .visual-editor input[type=range],
+.creation-site .visual-editor input[type=checkbox] {
+  accent-color: var(--editor-accent);
+}
+.creation-site .visual-editor .editor-tool-group,
+.creation-site .visual-editor #design-inspector,
+.creation-site .visual-editor .design-background,
+.creation-site .visual-editor .editor-page-navigation,
+.creation-site .visual-editor .editor-layer-navigation {
+  border-color: var(--editor-line);
+}
+.creation-site .visual-editor .badge {
+  background: #cfddc6;
+  color: var(--green);
+}
+.creation-site .visual-editor button:focus-visible,
+.creation-site .visual-editor input:focus-visible,
+.creation-site .visual-editor textarea:focus-visible,
+.creation-site .visual-editor select:focus-visible {
+  outline: 2px solid var(--editor-accent);
+  outline-offset: 3px;
+}
+.creation-site .visual-editor :is(#photo-handles, #object-handles) {
+  border-color: var(--editor-accent);
+}
+.creation-site .visual-editor :is(#photo-handles, #object-handles) :is(.photo-handle, .rotation-handle),
+.creation-site .visual-editor :is(#photo-handles, #object-handles) output {
+  background: var(--editor-accent);
+  color: #fff;
+  border-color: #fff;
+  box-shadow: 0 0 0 1px var(--editor-accent);
+}
+.creation-site .visual-editor .rotation-handle::after {
+  background: var(--editor-accent);
+}
+.creation-site .visual-editor #design-sheet .design-element.selected,
+.creation-site .visual-editor #design-sheet .design-element[contenteditable]:focus {
+  outline-color: var(--editor-accent);
+}
+.creation-site .page:has(#book-start-form) {
+  background: var(--green);
+}
+.creation-site .page:has(#book-start-form) .auth-card {
+  background: #e3e9dc;
+  border-color: #a9b8a0;
+}
+.creation-site #book-start-form input {
+  background: #f6f7ef;
+  border-color: #a9b8a0;
+}
+
+/* Fundo e navegação comuns a todas as páginas. */
+body.creation-site,
+.creation-site main,
+.creation-site main[data-section],
+.creation-site main > .page,
+.creation-site main > .stack-area,
+.creation-site main > .quiet-library,
+.creation-site main .auth-page {
+  background: var(--green);
+}
+.creation-site main[data-section] {
+  --section-color: var(--paper);
+  --section-edge: #a9b8a0;
+}
+.creation-site main > .page {
+  color: var(--paper);
+}
+.creation-site .page > :is(h1, h2, h3, p, .eyebrow, .section-head, .muted),
+.creation-site .page > .section-head :is(h1, h2, p),
+.creation-site .reader-page > .design-hint,
+.creation-site .reader-page > .code-label,
+.creation-site .reader-page .page-controls > span {
+  color: var(--paper);
+}
+.creation-site main[data-section] :is(.auth-card, .simple-book, .proposal-card),
+.creation-site .page .auth-card {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: #a9b8a0;
+}
+.creation-site .page .auth-card :is(h1, h2, h3, p, label),
+.creation-site :is(.simple-book, .proposal-card) :is(h1, h2, h3, p) {
+  color: var(--ink);
+}
+.creation-site main .back-link,
+.creation-site main .shelf-zoom-exit,
+.creation-site .auth-page:has(.form-library-background) > .back-link,
+.creation-site .visual-editor .editor-sidebar .back-link {
+  background: var(--green);
+  color: var(--paper);
+  border: 1px solid #8fa792;
+  box-shadow: none;
+}
+.creation-site main .back-link:hover,
+.creation-site main .shelf-zoom-exit:hover,
+.creation-site .visual-editor .editor-sidebar .back-link:hover {
+  background: #28533e;
+  border-color: var(--paper);
+}
+.creation-site main .back-link::before,
+.creation-site main .shelf-zoom-exit::before {
+  color: inherit;
+}
+.creation-site .visual-editor .editor-canvas-head .design-hint,
+.creation-site .visual-editor #live-preview > .design-hint {
+  color: var(--paper);
+}
+
+/* Formulários sobre a estante completa, desfocada ao fundo. */
+.creation-site main > .page.auth-page:has(.form-library-background) {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: none;
+  min-height: 100svh;
+  background: transparent;
+  padding: 76px 24px 40px;
+}
+.creation-site .auth-page > .form-library-background {
+  inset: -12px;
+  padding-top: 24px;
+  filter: blur(5px) brightness(.76) saturate(.8);
+  transform: scale(1.025);
+}
+.creation-site main .page.auth-page:has(.form-library-background) .auth-card,
+.creation-site main .page.auth-page:has(.form-library-background) .auth-card.book-start {
+  position: relative;
+  isolation: isolate;
+  background: #e3e9dc;
+  color: var(--ink);
+  width: min(490px, 100%);
+  max-width: 490px;
+  margin: 24px auto;
+  padding: 42px 36px 46px 52px;
+  border: 1px solid #a9b8a0;
+  border-radius: 3px 8px 8px 3px;
+  box-shadow: inset 6px 0 9px -7px #173b2d99, 0 18px 60px #061c1666, 5px 5px 0 #c9d2c2;
+}
+.creation-site main .page.auth-page:has(.form-library-background) .auth-card::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; left: 17px; width: 1px;
+  background: #a9b8a0;
+  box-shadow: 2px 0 3px #ffffff80;
+  pointer-events: none;
+}
+.creation-site main .page.auth-page:has(.form-library-background) .auth-card :is(input, textarea, select) {
+  background: #f6f7ef;
+  border-color: #a9b8a0;
+  color: var(--ink);
+}
+.creation-site main .page.auth-page:has(.form-library-background) .auth-card .button {
+  box-shadow: 3px 3px 0 #a9b8a0;
+}
+@media (max-width: 600px) {
+  .creation-site main > .page.auth-page:has(.form-library-background) { padding: 76px 20px 32px; }
+  .creation-site main .page.auth-page:has(.form-library-background) .auth-card { padding: 30px 22px 34px 36px; }
+  .creation-site .auth-page > .form-library-background { filter: blur(4px) brightness(.76) saturate(.8); }
+}
+
+:is(.spine, .spine-preview) { position: relative; isolation: isolate; }
+.spine-art { position: absolute; inset: 0; background-position: center; background-size: 100% 100%; background-repeat: no-repeat; pointer-events: none; z-index: -1; }
+.spine-format-options { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-bottom: 16px; }
+.spine-format-options button { padding: 8px 4px; border: 1px solid #a9b8a0; background: #f6f7ef; color: #173b2d; border-radius: 5px; }
+.spine-format-options button[aria-pressed=true] { outline: 2px solid #41715b; outline-offset: 1px; }
+.spine-format-sample { display: block; width: 30px; height: 85px; margin: 0 auto 6px; background-color: #70988a; background-size: 100% 100%; border-radius: 3px; }
+.spine-format-options small { font-size: 10px; }
