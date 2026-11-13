@@ -385,7 +385,7 @@ function designHTML(design) {
     '">' + (design?.elements || []).map(item => {
       if (!['text', 'rectangle', 'ellipse', 'postit', 'sticker', 'tape', 'clip', 'photo', 'stroke']
         .includes(item.type)) return '';
-      const style = 'left:' + number(item.x, 0, 600) / 6 + '%;top:' + number(item.y, 0, 840) / 8.4 +
+      const style = (window.PoyObjects?.style(item) || '') + 'left:' + number(item.x, 0, 600) / 6 + '%;top:' + number(item.y, 0, 840) / 8.4 +
         '%;width:' + number(item.width, 1, 600, 180) / 6 + '%;height:' + number(item.height, 1, 840, 180) /
         8.4 + '%;transform:rotate(' + number(item.rotation, -180, 180) + 'deg);font-size:' + number(item
           .fontSize, 1, 160, 24) / 6 + 'cqw;font-family:' + ({
@@ -408,7 +408,7 @@ function designHTML(design) {
           '" style="object-position:' + x + '% ' + y + '%;transform:scale(' + number(item.zoom, 100, 300,
             100) / 100 + ');transform-origin:' + x + '% ' + y + '%"></button>';
       }
-      if (item.type === 'sticker' || item.type === 'clip') content = '<span class="symbol">' + (item
+      if (!window.PoyObjects?.find(item.objectStyle) && (item.type === 'sticker' || item.type === 'clip')) content = '<span class="symbol">' + (item
         .type === 'clip' ? '📎' : content || '🌸') + '</span>';
       if (item.type === 'stroke') content = '<svg viewBox="0 0 ' + number(item.width, 1, 600, 600) + ' ' +
         number(item.height, 1, 840, 840) +
