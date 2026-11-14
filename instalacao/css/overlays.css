@@ -1,0 +1,84 @@
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  padding: 24px 4vw;
+  font-size: 12px;
+  border-top: 1px solid #ded8ca;
+  min-height: 74px;
+}
+
+dialog {
+  width: min(600px, 92vw);
+  padding: 45px;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 20px 90px #0002;
+}
+
+dialog::backdrop {
+  background: #25312670;
+  backdrop-filter: blur(5px);
+}
+
+dialog p {
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  font-size: 23px;
+}
+
+#photo-view {
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: hidden;
+  text-align: center;
+}
+
+#photo-view[open] {
+  display: grid;
+  place-items: center;
+}
+
+#photo-view::backdrop {
+  background: transparent;
+  backdrop-filter: none;
+}
+
+#photo-view img {
+  width: auto;
+  height: auto;
+  max-width: 85vw;
+  max-height: 82dvh;
+  object-fit: contain;
+  transition: transform .12s;
+}
+
+#photo-view p {
+  display: none;
+}
+
+#photo-view .close {
+  top: 24px;
+  right: 24px;
+  z-index: 1;
+}

@@ -1,0 +1,85 @@
+#shelf {
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(8px, 1.2vw, 20px);
+  min-height: 330px;
+  height: 47vh;
+  max-height: 570px;
+  border-bottom: 22px solid var(--wood);
+  padding: 15px 2vw 0;
+  box-shadow: 0 5px #8e71504d;
+  transition: opacity .6s, filter .6s;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.spine {
+  flex: 1 0 65px;
+  max-width: 160px;
+  height: var(--height);
+  border: 0;
+  border-radius: 3px 4px 0 0;
+  background: var(--cover);
+  padding: 15px 8px;
+  color: var(--book-ink, #f8f1de);
+  transform: rotate(var(--lean));
+  transform-origin: bottom;
+  box-shadow: inset 4px 0 #ffffff30, inset -3px 0 #0001, 3px 0 3px #0001;
+  transition: translate .25s, outline .2s;
+}
+
+.spine::before {
+  content: '';
+  position: absolute;
+  inset: 12px 9px;
+  border: 1px solid currentColor;
+  opacity: .35;
+  pointer-events: none;
+}
+
+.spine::after {
+  content: '✳';
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  font-size: 27px;
+  opacity: .8;
+}
+
+.spine:nth-child(3n)::before {
+  border-block: 5px double currentColor;
+  border-inline: 0;
+}
+
+.spine:nth-child(4n) {
+  background-image: repeating-linear-gradient(90deg, transparent 0 5px, #fff1 5px 6px);
+}
+
+.spine:hover,
+.spine.selected {
+  outline: 3px solid #344635;
+  outline-offset: 4px;
+  translate: 0 -12px;
+  background-color: var(--cover);
+}
+
+.spine span {
+  position: relative;
+  z-index: 1;
+  writing-mode: vertical-rl;
+  max-height: 75%;
+  overflow: hidden;
+}
+
+.shelf-empty {
+  margin: auto;
+  padding: 30px;
+  text-align: center;
+}
+
+body.reading #shelf {
+  opacity: .18;
+  filter: blur(2px);
+  pointer-events: none;
+}

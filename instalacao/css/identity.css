@@ -1,0 +1,340 @@
+.spine.spine-pattern-none {
+  background-image: none;
+}
+
+.spine.spine-pattern-lines {
+  background-image: repeating-linear-gradient(0deg, transparent 0 23px, var(--spine-pattern-color, #ffffff) 23px 24px);
+}
+
+.spine.spine-pattern-grid {
+  background-image: linear-gradient(var(--spine-pattern-color, #ffffff) 1px, transparent 1px), linear-gradient(90deg, var(--spine-pattern-color, #ffffff) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.spine.spine-pattern-dots {
+  background-image: radial-gradient(circle, var(--spine-pattern-color, #ffffff) 1px, transparent 1.5px);
+  background-size: 16px 16px;
+}
+
+.spine.spine-pattern-stripes {
+  background-image: repeating-linear-gradient(135deg, transparent 0 12px, var(--spine-pattern-color, #ffffff) 12px 16px, transparent 16px 24px);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: var(--sans);
+}
+
+:focus-visible {
+  outline: 3px solid #b65336;
+  outline-offset: 5px;
+}
+
+.installation-site header {
+  border-bottom: 1px solid var(--line);
+}
+
+.installation-site h1 {
+  font: 800 clamp(32px, 4.1vw, 64px)/1.08 var(--sans);
+  letter-spacing: -.055em;
+  margin: 18px 0;
+}
+
+.installation-site #shelf {
+  border-bottom: 7px solid var(--green);
+  box-shadow: none;
+  padding-bottom: 0;
+}
+
+.installation-site .spine {
+  border-radius: 7px 7px 0 0;
+  box-shadow: inset 3px 0 #ffffff30;
+}
+
+.installation-site .spine span {
+  font: 700 clamp(19px, 2.2vw, 30px)/1.2 var(--sans);
+  letter-spacing: -.025em;
+}
+
+.installation-site .spine::after {
+  content: '';
+  width: 18px;
+  height: 5px;
+  margin: auto;
+  border-radius: 3px;
+  background: currentColor;
+}
+
+.installation-site button {
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.installation-site #book-name {
+  font: 700 26px/1.2 var(--sans);
+  letter-spacing: -.035em;
+}
+
+.installation-site footer {
+  border-color: var(--line);
+}
+
+.installation-site dialog {
+  background: var(--paper);
+  border-color: var(--line);
+  border-radius: 16px;
+}
+
+.installation-site #return-shelf,
+.installation-site #previous,
+.installation-site #next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.installation-site #return-shelf::before,
+.installation-site #previous::before,
+.installation-site #next::before {
+  content: '';
+  display: block;
+  position: static;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  margin: 0;
+  background: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 12H5m6-6-6 6 6 6' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.installation-site #next::before {
+  transform: rotate(180deg);
+}
+
+.installation-site {
+  background: var(--green);
+  color: var(--paper);
+}
+
+.installation-site header,
+.installation-site footer {
+  border-color: #e7ad5166;
+}
+
+.installation-site #shelf {
+  border-bottom-color: var(--yellow);
+}
+
+.installation-site .reader-top,
+.installation-site .pagination {
+  background: var(--paper);
+  color: var(--green);
+  padding: 10px 16px;
+  border-radius: 10px;
+}
+
+.installation-site .spine.selected,
+.installation-site .spine:hover {
+  outline-color: var(--paper);
+}
+
+.installation-site #book-name {
+  color: var(--paper);
+}
+
+html:has(body.installation-site) {
+  height: 100%;
+  overflow: hidden;
+}
+
+body.installation-site {
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.installation-site header {
+  flex: 0 0 auto;
+  justify-content: center;
+  padding: clamp(12px, 3vh, 28px) 20px;
+}
+
+.installation-site h1.installation-title {
+  margin: 0;
+  padding: 8px 18px 12px;
+  background: var(--paper);
+  color: var(--green);
+  border-right: 5px solid var(--yellow);
+  font: 800 clamp(32px, min(7vw, 11vh), 100px)/1.08 var(--sans);
+  letter-spacing: -.065em;
+  white-space: nowrap;
+}
+
+.installation-site .installation-title em {
+  color: var(--red);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.installation-site #installation {
+  flex: 1 1 0;
+  min-height: 0;
+  padding: 16px 5vw 20px;
+}
+
+.installation-site #shelf {
+  flex: 1 1 0;
+  min-height: 0;
+  height: auto;
+  max-height: none;
+  justify-content: flex-start;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  padding-top: 24px;
+}
+
+.installation-site #shelf .spine {
+  flex: 1 0 clamp(80px, 10vw, 160px);
+  min-width: 80px;
+}
+
+.installation-site #shelf::-webkit-scrollbar {
+  display: none;
+}
+
+.installation-site footer {
+  flex: 0 0 auto;
+  min-height: 0;
+  padding: 12px 4vw;
+}
+
+@media (max-height: 500px), (max-width: 600px) {
+  .installation-site footer {
+    padding: 8px 4vw;
+    font-size: 10px;
+  }
+}
+
+.installation-site.reading header {
+  padding-block: 12px;
+}
+
+.installation-site.reading .installation-title {
+  font-size: clamp(28px, min(5vw, 8vh), 64px);
+}
+
+.installation-site #reader {
+  inset: 0 5vw 12px;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  justify-items: center;
+  align-items: center;
+  align-content: stretch;
+  gap: 12px;
+  min-height: 0;
+}
+
+.installation-site #reader .reader-top {
+  position: fixed;
+  top: max(20px, env(safe-area-inset-top));
+  right: max(20px, env(safe-area-inset-right));
+  z-index: 10;
+  display: block;
+  width: auto;
+  max-width: none;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+}
+
+.installation-site #book-code {
+  display: block;
+  padding: 7px 10px;
+  font-size: 10px;
+  background: var(--paper);
+  color: var(--green);
+  border-radius: 6px;
+}
+
+.installation-site #reader #book-name {
+  margin: 0;
+  font-size: clamp(18px, 3vh, 26px);
+}
+
+.installation-site #reader #spread {
+  height: 100%;
+  width: auto;
+  aspect-ratio: 10 / 7;
+  max-width: 100%;
+  min-height: 0;
+}
+
+.installation-site #reader .pagination {
+  margin: 0;
+  padding: 6px 14px;
+}
+
+@media (max-width: 600px) {
+  .installation-site.reading header {
+    padding-top: 72px;
+  }
+}
+
+.installation-site #return-shelf {
+  position: fixed;
+  inset: max(20px, env(safe-area-inset-top)) auto auto max(20px, env(safe-area-inset-left));
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #c9bfad;
+  border-radius: 50%;
+  background: #f7eed5;
+  color: #173b2d;
+  font-size: 0;
+  line-height: 1;
+}
+
+.spine {
+  position: relative;
+  isolation: isolate;
+}
+
+.spine-art {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: -1;
+}

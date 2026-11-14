@@ -1,0 +1,120 @@
+/* Identidade visual: definição única das cores e fontes. */
+:root {
+  color-scheme: light;
+  --paper: #f7eed5;
+  --ink: #173b2d;
+  --muted: #53634c;
+  --wood: #e7ad51;
+  --line: #c5b88f;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--paper);
+  --green: #173b2d;
+  --lime: #e8e5bc;
+  --red: #dc7247;
+  --pink: #efd4b3;
+  --olive: #8c914f;
+  --blue: #70988a;
+  --yellow: #e7ad51;
+  --sans: 'Manrope', 'Trebuchet MS', Arial, sans-serif;
+  --serif: var(--sans);
+  --display-font: var(--sans);
+}
+
+body.installation-site #return-shelf {
+  left: max(40px, env(safe-area-inset-left));
+}
+
+body.installation-site .shelf-slide {
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0 0 5px;
+  border: 1px solid var(--yellow);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--green);
+  font-size: 40px;
+  line-height: 1;
+  box-shadow: 0 3px 12px #0003;
+}
+
+#shelf-left {
+  left: 12px;
+}
+
+#shelf-right {
+  right: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  border-radius: 50px;
+  padding: 11px 20px;
+}
+
+button:hover {
+  background: #e9e8db;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #6c815c;
+  outline-offset: 5px;
+}
+
+button:disabled {
+  opacity: .3;
+  cursor: default;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 4vw;
+  gap: 20px;
+}
+
+main {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 5vw 40px;
+}
+
+h1 {
+  font-weight: 400;
+  margin: 20px 0 16px;
+}
