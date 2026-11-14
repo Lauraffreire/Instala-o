@@ -18,6 +18,14 @@
     [.56,.67], [.56,.53], [.56,.43], [.56,.33],
     [.62,.7], [.62,.58], [.62,.5], [.62,.42]
   ].map(([x,y]) => ({x,y,z:0}));
+  const move = (direction,start) => {
+    for (const [offset,shift] of [[0,.32],[120,.32],[220,.18],[320,0],[440,0]]) {
+      const bounds=currentBook ? document.querySelector('#spread').getBoundingClientRect() : null;
+      const x=bounds ? (bounds.left+bounds.width*(.5+direction*shift))/innerWidth : .5+direction*shift;
+      const y=bounds ? (bounds.top+bounds.height/2)/innerHeight : .65;
+      processHands({landmarks:[hand().map(p=>({...p,x:p.x+.5-x,y:p.y+y-.65}))]},start+offset);
+    }
+  };
   try {
     while (!books.length || !cameraRunning || !poseModel) {
       if (testErrors.length) throw Error(testErrors.join('; '));
@@ -37,22 +45,36 @@
     processHands({landmarks:[closed]}, time);
     processHands({landmarks:[closed.map(p => ({...p,x:.5+(p.x-.5)*.7,y:.7+(p.y-.7)*.7}))]}, time + 250);
     assert(currentBook?.id === testBook.id && !document.querySelector('#reader').hidden, 'Fechar e puxar a mão abre o livro');
+    processHands({landmarks:[closed]}, time + 275);
+    assert(document.querySelector('#instruction').textContent.includes('folhear') && !document.querySelector('#instruction').textContent.includes('abrir o livro'), 'Livro aberto apresenta instruções de leitura mesmo com a mão fechada');
     capture('leitura');
     const oldIndex = spreadIndex;
     processHands({landmarks:[]}, time + 300);
     assert(currentBook?.id === testBook.id && spreadIndex === oldIndex, 'Baixar a mão mantém o livro aberto');
     const gestureStart = time + 2000;
-    swipeArmed = true;
-    for (let i = 0; i < 6; i++) {
-      const moved = hand().map(p => ({...p,x:p.x+i*.05}));
-      processHands({landmarks:[moved]}, gestureStart + i*50);
+    resetNavigation();
+    for (let i=0;i<6;i++) processHands({landmarks:[hand().map(p=>({...p,x:p.x-.32}))]},gestureStart+i*100);
+    assert(spreadIndex===0,'Mão já na lateral não ativa navegação sem passar pelo centro');
+    assert(navigationGesture===null,'Mão fora do livro não prepara o gesto de folhear');
+    resetNavigation();
+    move(1,gestureStart+1000);
+    assert(spreadIndex===1,'Direita para centro avança');
+    for(let i=0;i<8;i++) processHands({landmarks:[hand()]},gestureStart+1600+i*100);
+    assert(spreadIndex===1,'Manter a mão ao centro não repete o avanço');
+    for(const [offset,shift] of [[2400,.18],[2500,.32],[2620,.32]]) {
+      processHands({landmarks:[hand().map(p=>({...p,x:p.x-shift}))]},gestureStart+offset);
     }
-    assert(spreadIndex === 1, 'Folhear com a mão aberta vira uma página');
+    assert(spreadIndex===1,'Ir do centro à lateral apenas prepara e não vira páginas');
+    move(-1,gestureStart+3200);
+    assert(spreadIndex===0,'Esquerda para centro recua');
+    move(1,gestureStart+4600);
+    assert(spreadIndex===1,'Novo percurso direita para centro volta a avançar');
     turn(1);
     assert(spreadIndex === 1, 'Não ultrapassar a última página');
     showPhoto(testPhoto, true, 'Fotografia de teste');
     assert(document.querySelector('#photo-view').open, 'Abrir fotografia para ampliação');
     const zoomHand = hand();
+    for (const tip of [12,16,20]) zoomHand[tip] = {x:.52,y:.8,z:0};
     zoomStart = distance(zoomHand[4], zoomHand[8]) / distance(zoomHand[0], zoomHand[9]);
     zoomHand[4].x -= .2;
     processHands({landmarks:[zoomHand]}, gestureStart + 500);
@@ -80,6 +102,18 @@
     const savedPresence = lastPresence;
     cameraLoop(savedPresence + ABSENCE_MS + 1);
     assert(currentBook === null && document.querySelector('#reader').hidden, 'Ausência prolongada regressa à estante');
+    const originalSlide = slideShelf;
+    const slides = [];
+    slideShelf = direction => slides.push(direction);
+    const shelfTime = Math.max(lastGesture+1000,performance.now()+1000);
+    resetNavigation();
+    processHands({landmarks:[hand().map(p=>({...p,x:p.x-.32}))]},shelfTime);
+    processHands({landmarks:[hand().map(p=>({...p,x:p.x-.32}))]},shelfTime+150);
+    assert(!slides.length, 'Apresentar a mão na lateral não desloca a estante sem preparação');
+    move(1,shelfTime+1000);
+    move(-1,shelfTime+2500);
+    assert(slides.join(',') === '1,-1', 'Direita e esquerda para centro percorrem a estante nos dois sentidos');
+    slideShelf = originalSlide;
     openBook(testBook.id);
     testBooks = [];
     await loadBooks();

@@ -78,9 +78,7 @@ function stopCamera() {
   poseModel = null;
   smoothedCursor = null;
   trackedWrist = null;
-  palmHistory = [];
-  steadyFrames = 0;
-  swipeArmed = true;
+  resetNavigation();
   fistStart = null;
   $('#hand-cursor').hidden = true;
   resetDwell();

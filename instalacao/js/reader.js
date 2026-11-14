@@ -47,7 +47,8 @@ function openBook(id) {
   $('#book-name').textContent = book.name;
   $('#book-code').textContent = 'Código · ' + (book.code || 'POY-' + book.id.slice(0, 8).toUpperCase());
   renderSpread();
-  hint('Desliza a mão aberta para folhear. Aponta para os botões para selecionar.');
+  resetNavigation();
+  hint('Dentro do livro, mão aberta: margem direita → centro avança; margem esquerda → centro recua.');
   $('#return-shelf').focus({
     preventScroll: true
   });
@@ -58,7 +59,7 @@ function returnToShelf() {
   currentBook = null;
   updateShelfArrows();
   readingPages = [];
-  palmHistory = [];
+  resetNavigation();
   fistStart = null;
   document.body.classList.remove('reading');
   $('#reader').hidden = true;

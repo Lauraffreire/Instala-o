@@ -270,6 +270,18 @@ body.installation-site {
   border-radius: 0;
 }
 
+.installation-site .book-code-help {
+  display: block;
+  max-width: none;
+  margin-top: 8px;
+  margin-left: auto;
+  color: var(--paper);
+  font-size: 10px;
+  line-height: 1.5;
+  text-align: right;
+  white-space: nowrap;
+}
+
 .installation-site #book-code {
   display: block;
   padding: 7px 10px;

@@ -41,7 +41,13 @@ Os scripts clássicos partilham o âmbito da aplicação e são carregados com
 
 - A posição da palma seleciona o livro na estante.
 - Fechar os dedos e puxar abre o livro selecionado.
-- Deslocar a mão aberta lateralmente percorre a estante ou vira páginas.
+- Mão aberta da direita para o centro para avançar, ou da esquerda para o
+  centro para recuar, tanto na estante como na leitura. A lateral prepara o
+  sentido e a chegada ao centro confirma a ação. Sair do centro não vira páginas.
+  Na leitura, as zonas são relativas ao tamanho e à posição do livro aberto;
+  a palma tem de permanecer dentro dos seus limites, incluindo em altura.
+  Na estante, as zonas continuam relativas à largura do ecrã.
+  Não é necessário rodar a mão nem fazer um movimento rápido.
 - Estender o indicador e permanecer sobre um botão ativa a seleção.
 - A distância entre o polegar e o indicador controla a ampliação da fotografia.
 - Entre várias mãos, a maior área da palma é usada como aproximação à mão mais
@@ -52,7 +58,15 @@ para até duas pessoas. Os parâmetros dos modelos ficam em `js/camera.js`.
 A seleção por permanência demora 1300 ms e o regresso à estante acontece após
 60000 ms sem presença, quando o modelo de presença está disponível. Estas
 constantes ficam em `js/state.js`. Baixar a mão mantém o livro aberto.
-Os limiares e os tempos existentes foram preservados na organização.
+Os parâmetros ficam no objeto `NAVIGATION` em `js/state.js`. A mão permanece
+100 ms na lateral esquerda (até 25%) ou direita (a partir de 75%) para preparar
+o sentido. A seleção ocorre após chegar à zona central (38% a 62% da imagem)
+durante 100 ms, com intervalo mínimo de 400 ms entre ações. Permanecer ao centro
+não repete a ação. O cursor acompanha a palma com a mão aberta e o indicador ao apontar.
+A mão de comando é acompanhada pelo pulso para manter a continuidade.
+Para ampliar, manter o polegar e o indicador
+afastados com os restantes dedos recolhidos; a mão totalmente aberta fica
+reservada à navegação.
 
 O processamento das imagens é feito no navegador. O código não grava nem envia
 as imagens da câmara para a base de dados. Os cliques gerados pelo sistema de
