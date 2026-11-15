@@ -12,15 +12,13 @@ Na pasta `Instalação`, executar:
 python -m http.server 5501
 ```
 
-Abrir `http://localhost:5501/` e permitir o acesso à câmara. A entrada alternativa
-`http://localhost:5501/instalacao/` também se mantém disponível.
 O acesso à câmara requer localhost ou HTTPS. O carregamento do MediaPipe,
 dos modelos, das fontes e dos livros publicados exige acesso à Internet.
 Não são necessários pacotes npm nem compilação.
 
 ## JavaScript
 
-| Ficheiro em `instalacao/` | Responsabilidade |
+| Ficheiro em a pasta principal | Responsabilidade |
 | --- | --- |
 | `js/state.js` | Estado partilhado, utilitários, tempos e constantes. |
 | `js/hand-feedback.js` | Silhueta e detalhes das mãos apresentados no canvas. |
@@ -34,7 +32,7 @@ Não são necessários pacotes npm nem compilação.
 | `supabase/client.js` | Cliente anónimo, limitado à leitura de livros públicos. |
 
 Os scripts clássicos partilham o âmbito da aplicação e são carregados com
-`defer`. Manter a ordem dos scripts nas duas entradas HTML; o ficheiro
+`defer`. Manter a ordem dos scripts no ficheiro index.html; o ficheiro
 `instalacao.js` é executado por último.
 
 ## Gestos e presença
@@ -75,7 +73,7 @@ bloqueado como na implementação anterior.
 
 ## Estilos e fontes
 
-`instalacao/estilos.css` carrega os componentes pela ordem da cascata:
+`estilos.css` carrega os componentes pela ordem da cascata:
 
 - `css/base.css`: definição única de fontes e cores, base e controlos.
 - `css/shelf.css`: estante e lombadas.
@@ -83,7 +81,7 @@ bloqueado como na implementação anterior.
 - `css/overlays.css`: rodapé, diálogos e ampliação.
 - `css/tracking.css`: cursor, canvas, animações e adaptações responsivas.
 
-`instalacao/identidade.css` importa Manrope e carrega `css/identity.css` depois
+`identidade.css` importa Manrope e carrega `css/identity.css` depois
 dos componentes. Esta folha contém apenas as regras da identidade utilizadas
 pela instalação, sem os ecrãs de criação e autenticação do site.
 
@@ -100,9 +98,8 @@ sessão de autenticação. A coleção é atualizada a cada 10 segundos e quando
 a janela recebe foco.
 
 As bibliotecas em `supabase/vendor/` são dependências externas e conservam as
-respetivas licenças. O diretório antigo `criacao/` não é carregado pela instalação
-e não faz parte desta reorganização; o site de criação atual está em
-`../pages-of-you/`.
+respetivas licenças. O site de criação atual está em `../pages-of-you/`. A pasta antiga
+`criacao/` foi removida. Os ficheiros da instalação estão na pasta principal.
 
 ## Verificar
 
@@ -125,6 +122,6 @@ enquadramento, reconhecimento das mãos e disponibilidade dos serviços online.
 
 ## Entrega
 
-Conservar `index.html` e a pasta `instalacao/`, com os seus caminhos relativos.
+Conservar `index.html`, `css/`, `js/`, `supabase/` e os restantes ficheiros, com os seus caminhos relativos.
 Não copiar o código da instalação para cima do site de criação nem o inverso.
 Não colocar chaves secretas ou `service_role` nos ficheiros públicos.

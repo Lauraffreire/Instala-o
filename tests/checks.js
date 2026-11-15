@@ -120,7 +120,7 @@
     assert(currentBook === null && !document.querySelectorAll('[data-book]').length, 'Remoção de livro publicado atualiza a instalação');
     stopCamera();
     assert(testStopped && !cameraRunning && handModel === null && poseModel === null, 'Libertar câmara e modelos ao terminar');
-    const clientSource = await (await fetch('/instalacao/supabase/client.js')).text();
+    const clientSource = await (await fetch('/supabase/client.js')).text();
     let clientOptions;
     const queryFilters = [];
     const rows = Array.from({length:101}, (_, index) => ({
