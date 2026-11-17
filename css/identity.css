@@ -397,3 +397,24 @@ body.installation-site {
   overflow: hidden;
   vertical-align: baseline;
 }
+
+/* Convite permanente para criar memorias no website. */
+.installation-site footer {
+  flex-wrap: wrap;
+  row-gap: 8px;
+}
+.installation-site .website-invitation {
+  flex: 0 0 100%;
+  margin: 0;
+  color: var(--paper);
+  font-size: clamp(12px, 1.2vw, 16px);
+  line-height: 1.5;
+  text-align: center;
+}
+.installation-site .website-invitation a {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
