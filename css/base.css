@@ -10,9 +10,9 @@
   color: var(--ink);
   background: var(--paper);
   --green: #173b2d;
-  --lime: #e8e5bc;
+  --lime: var(--paper);
   --red: #dc7247;
-  --pink: #efd4b3;
+  --pink: var(--paper);
   --olive: #8c914f;
   --blue: #70988a;
   --yellow: #e7ad51;

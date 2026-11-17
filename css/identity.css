@@ -350,3 +350,50 @@ body.installation-site {
   pointer-events: none;
   z-index: -1;
 }
+
+/* Logotipo plano com uma linha a sugerir a lombada. */
+.installation-site h1.installation-title {
+  position: relative;
+  background: var(--paper);
+  border: 3px solid var(--yellow);
+  border-radius: 12px 3px 3px 12px;
+  box-shadow: none;
+}
+.installation-site h1.installation-title::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 12px;
+  width: 1px;
+  background: var(--yellow);
+  border: 0;
+  box-shadow: none;
+  pointer-events: none;
+}
+.installation-site h1.installation-title::after {
+  content: none;
+}
+@media (max-width: 600px) {
+  .installation-site h1.installation-title {
+    border-width: 2px;
+    border-radius: 9px 3px 3px 9px;
+  }
+  .installation-site h1.installation-title::before { left: 7px; }
+}
+
+/* Ponto final circular, independente do desenho da fonte. */
+.installation-site .installation-title .title-period {
+  display: inline-block;
+  width: .13em;
+  height: .13em;
+  margin-left: .035em;
+  border-radius: 50%;
+  background: currentColor;
+  font-size: inherit;
+  line-height: 0;
+  color: inherit;
+  text-indent: -9999px;
+  overflow: hidden;
+  vertical-align: baseline;
+}
