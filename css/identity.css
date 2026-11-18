@@ -221,6 +221,16 @@ body.installation-site {
   min-width: 80px;
 }
 
+.installation-site #shelf .spine-preset {
+  border-radius: var(--spine-radius);
+  box-shadow: none;
+}
+
+.installation-site .spine-preset::before,
+.installation-site .spine-preset::after {
+  content: none;
+}
+
 .installation-site #shelf::-webkit-scrollbar {
   display: none;
 }
@@ -351,51 +361,24 @@ body.installation-site {
   z-index: -1;
 }
 
-/* Logotipo plano com uma linha a sugerir a lombada. */
+/* Logotipo Pages of you. */
 .installation-site h1.installation-title {
-  position: relative;
   background: var(--paper);
-  border: 3px solid var(--yellow);
-  border-radius: 12px 3px 3px 12px;
+  border: .1em solid var(--yellow);
+  border-inline-width: .2em 0;
+  border-radius: .46em;
   box-shadow: none;
-}
-.installation-site h1.installation-title::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 12px;
-  width: 1px;
-  background: var(--yellow);
-  border: 0;
-  box-shadow: none;
-  pointer-events: none;
-}
-.installation-site h1.installation-title::after {
-  content: none;
-}
-@media (max-width: 600px) {
-  .installation-site h1.installation-title {
-    border-width: 2px;
-    border-radius: 9px 3px 3px 9px;
-  }
-  .installation-site h1.installation-title::before { left: 7px; }
+  padding: .52em clamp(10px, 2.6vw, 1.75em);
+  letter-spacing: -.035em;
+  text-transform: none;
+  white-space: nowrap;
 }
 
-/* Ponto final circular, independente do desenho da fonte. */
-.installation-site .installation-title .title-period {
-  display: inline-block;
-  width: .13em;
-  height: .13em;
-  margin-left: .035em;
-  border-radius: 50%;
-  background: currentColor;
-  font-size: inherit;
-  line-height: 0;
-  color: inherit;
-  text-indent: -9999px;
-  overflow: hidden;
-  vertical-align: baseline;
+.installation-site h1.installation-title em {
+  margin: 0;
+  color: var(--yellow);
+  font-style: normal;
+  font-weight: inherit;
 }
 
 /* Convite permanente para criar memorias no website. */

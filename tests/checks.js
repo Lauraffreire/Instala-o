@@ -32,6 +32,16 @@
       await wait();
     }
     assert(document.querySelectorAll('[data-book]').length === 1, 'Carregar e apresentar livros públicos');
+    const defaultSpine = document.querySelector('.spine-preset');
+    assert(defaultSpine && getComputedStyle(defaultSpine).backgroundColor === 'rgb(144, 150, 83)' &&
+      getComputedStyle(defaultSpine.querySelector('.spine-art')).backgroundImage !== 'none',
+      'Aplicar o modelo oliva aos livros sem lombada escolhida');
+    books[0].spine = {format: 'terra-lines', background: '#345678', patternColor: '#fedcba'};
+    renderShelf();
+    const customSpine = document.querySelector('.spine-preset');
+    assert(getComputedStyle(customSpine).backgroundColor === 'rgb(52, 86, 120)' &&
+      getComputedStyle(customSpine.querySelector('.spine-art')).backgroundImage.includes('fedcba'),
+      'Usar as cores personalizadas com o detalhe escolhido');
     assert(testOptions.hand.numHands === 4 && testOptions.hand.minHandDetectionConfidence === .65 && testOptions.hand.minTrackingConfidence === .6, 'Configuração de deteção das mãos preservada');
     assert(testOptions.pose.numPoses === 2 && testOptions.media.audio === false, 'Deteção de presença sem captura de áudio');
     assert(DWELL_MS === 1300 && ABSENCE_MS === 60000, 'Tempos de seleção e ausência preservados');
